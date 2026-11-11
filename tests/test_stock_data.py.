@@ -1,0 +1,49 @@
+
+"""Unit tests for stock-data preparation (no API request is made)."""
+
+import unittest
+
+import pandas as pd
+
+from Stocks_candle_stics import INTERVALS, prepare_stock_dataframe
+
+
+class StockDataTests(unittest.TestCase):
+    def test_interval_mapping_supports_all_requested_intervals(self):
+        self.assertEqual(INTERVALS["DAILY"][1], "Time Series (Daily)")
+        self.assertEqual(INTERVALS["WEEKLY"][1], "Weekly Time Series")
+        self.assertEqual(INTERVALS["MONTHLY"][1], "Monthly Time Series")
+
+    def test_dataframe_has_numeric_ohlc_columns_in_date_order(self):
+        data = {
+            "2024-01-03": {
+                "1. open": "12", "2. high": "15",
+                "3. low": "11", "4. close": "14",
+            },
+            "2024-01-02": {
+                "1. open": "10", "2. high": "13",
+                "3. low": "9", "4. close": "12",
+            },
+        }
+
+        result = prepare_stock_dataframe(data, years=10)
+
+        self.assertEqual(
+            list(result.columns),
+            ["Date", "Open", "High", "Low", "Close"],
+        )
+        self.assertTrue(result["Date"].is_monotonic_increasing)
+        self.assertTrue(pd.api.types.is_numeric_dtype(result["Close"]))
+
+    def test_rejects_zero_years(self):
+        with self.assertRaises(ValueError):
+            prepare_stock_dataframe({"2024-01-01": {}}, years=0)
+
+    def test_rejects_empty_time_series(self):
+        with self.assertRaises(ValueError):
+            prepare_stock_dataframe({}, years=1)
+
+
+if __name__ == "__main__":
+    unittest.main()
+    
