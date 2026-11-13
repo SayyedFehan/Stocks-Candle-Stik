@@ -77,7 +77,7 @@ def stock_info(interval, symbol, api_key):
         params={
             "function": function_name,
             "symbol": symbol,
-            "outputsize": "full",
+            "outputsize": "compact",
             "apikey": api_key,
         },
         timeout=20,
@@ -188,6 +188,8 @@ def plot_candlestick(df, symbol, interval, years):
 
     fig.autofmt_xdate()
     fig.tight_layout()
+
+    plt.savefig("candlestick_chart.png", dpi=150,bbox_inches="tight")
 
     plt.show()
 
