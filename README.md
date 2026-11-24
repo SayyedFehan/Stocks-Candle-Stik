@@ -91,9 +91,12 @@ python -m unittest discover -s tests -v
 Project structure
 
 Stocks-Candle-Stik/
+
 │
 
-├── Stocks_candle_stics.py ├── requirements.txt
+├── Stocks_candle_stics.py
+
+├── requirements.txt
 
 ├── README.md
 
@@ -105,7 +108,7 @@ Stocks-Candle-Stik/
 
 └── tests/
 
-    └── test_stock_data.py
+   └── test_stock_data.py
 
 Data source
 
