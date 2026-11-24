@@ -93,12 +93,14 @@ Project structure
 Stocks-Candle-Stik/
 │
  
-  
-  ├── Stocks_candle_stics.py
-         ├── requirements.txt
+├── Stocks_candle_stics.py ├── requirements.txt
+
 ├── README.md
+
 ├── creds.example.json
+
 ├── .gitignore
+
 │
 └── tests/
     └── test_stock_data.py
