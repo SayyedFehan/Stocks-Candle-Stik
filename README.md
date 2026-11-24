@@ -92,7 +92,6 @@ Project structure
 
 Stocks-Candle-Stik/
 │
- 
 ├── Stocks_candle_stics.py ├── requirements.txt
 
 ├── README.md
