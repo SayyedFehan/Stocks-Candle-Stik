@@ -92,6 +92,7 @@ Project structure
 
 Stocks-Candle-Stik/
 │
+
 ├── Stocks_candle_stics.py ├── requirements.txt
 
 ├── README.md
@@ -101,7 +102,9 @@ Stocks-Candle-Stik/
 ├── .gitignore
 
 │
+
 └── tests/
+
     └── test_stock_data.py
 
 Data source
